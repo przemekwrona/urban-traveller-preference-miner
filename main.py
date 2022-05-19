@@ -1,3 +1,4 @@
+from scikit import experiment
 
 if __name__ == '__main__':
-    print("Init")
+    experiment.run()
