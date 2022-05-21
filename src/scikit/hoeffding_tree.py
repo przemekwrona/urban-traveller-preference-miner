@@ -1,8 +1,9 @@
 import numpy as np
 from skmultiflow.trees import HoeffdingTreeClassifier
+import graphviz
 
 
-def learn(x, y, header):
+def learn(x, y, headers, class_names):
     n_samples = 0
     correct_cnt = 0
 
