@@ -90,30 +90,30 @@ def load_surveys():
     dataframe = pandas.read_csv('./resources/trips_[WALK, TRANSIT, BICYCLE, CAR]_otp_50330.csv', delimiter=';',
                                 names=headers, dtype=dtypes, skiprows=1)
 
-    aaa = {'CAR': 1,
-           'PUBLIC_TRANSPORT': 2,
-           'WALKING_ONLY': 3,
-           'MIXED_BIKE_AND_OTHER': 4,
-           'PRIVATE_BIKE': 5,
-           'MIXED_CAR_AND_OTHER': 5,
-           'OTHER': 6
-           }
+    travel_aggregation_dictionary = {'CAR': 1,
+                                     'PUBLIC_TRANSPORT': 2,
+                                     'WALKING_ONLY': 3,
+                                     'MIXED_BIKE_AND_OTHER': 4,
+                                     'PRIVATE_BIKE': 5,
+                                     'MIXED_CAR_AND_OTHER': 5,
+                                     'OTHER': 6
+                                     }
 
-    dictionary = {'BICYCLE': 1,
-                  'WALK-BICYCLE': 2,
-                  'BICYCLE-WALK': 2,
-                  'WALK-BICYCLE-WALK': 3,
-                  'BICYCLE-WALK-BICYCLE': 3,
-                  'BICYCLE-WALK-BICYCLE-WALK-BICYCLE-WALK-BICYCLE': 4,
-                  'BICYCLE-WALK-BICYCLE-WALK-BICYCLE': 4,
-                  'WALK-BICYCLE-WALK-BICYCLE-WALK-BICYCLE': 4,
-                  'BICYCLE-WALK-BICYCLE-WALK': 4,
-                  None: 5}
+    transport_mode_dictionary = {'BICYCLE': 1,
+                                 'WALK-BICYCLE': 2,
+                                 'BICYCLE-WALK': 2,
+                                 'WALK-BICYCLE-WALK': 3,
+                                 'BICYCLE-WALK-BICYCLE': 3,
+                                 'BICYCLE-WALK-BICYCLE-WALK-BICYCLE-WALK-BICYCLE': 4,
+                                 'BICYCLE-WALK-BICYCLE-WALK-BICYCLE': 4,
+                                 'WALK-BICYCLE-WALK-BICYCLE-WALK-BICYCLE': 4,
+                                 'BICYCLE-WALK-BICYCLE-WALK': 4,
+                                 None: 5}
 
-    dataframe['travelAggregation'] = dataframe.travelAggregation.replace(aaa)
-    dataframe['transportModes1'] = dataframe.transportModes1.replace(dictionary)
-    dataframe['transportModes2'] = dataframe.transportModes2.replace(dictionary)
-    dataframe['transportModes3'] = dataframe.transportModes3.replace(dictionary)
-    dataframe['transportModes4'] = dataframe.transportModes4.replace(dictionary)
+    dataframe['travelAggregation'] = dataframe.travelAggregation.replace(travel_aggregation_dictionary)
+    dataframe['transportModes1'] = dataframe.transportModes1.replace(transport_mode_dictionary)
+    dataframe['transportModes2'] = dataframe.transportModes2.replace(transport_mode_dictionary)
+    dataframe['transportModes3'] = dataframe.transportModes3.replace(transport_mode_dictionary)
+    dataframe['transportModes4'] = dataframe.transportModes4.replace(transport_mode_dictionary)
 
     return dataframe
